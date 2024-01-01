@@ -12,26 +12,41 @@ import { CreateBoard } from "./schema";
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { userId, orgId } = auth();
 
-  if (!userId) {
+  if (!userId || !orgId) {
     return {
       error: "Unauthorized",
     };
   }
 
-  const { title } = data;
+  const { title, image } = data;
+
+  const [imageId, imageThumbUrl, imageFullUrl, imageLinkHTML, imageUserName] =
+    image.split("|");
+
+  if (
+    !imageId ||
+    !imageThumbUrl ||
+    !imageFullUrl ||
+    !imageUserName ||
+    !imageLinkHTML
+  ) {
+    return {
+      error: "Missing fields. Fail to create board.",
+    };
+  }
 
   let board;
 
   try {
     board = await db.board.create({
       data: {
-        title: "11",
-        orgId: "12",
-        imageId: "12",
-        imageThumbUrl: "123",
-        imageFullUrl: "123",
-        imageUserName: "123",
-        imageLinkHTML: "123",
+        title: title,
+        orgId: orgId,
+        imageId: imageId,
+        imageThumbUrl: imageThumbUrl,
+        imageFullUrl: imageFullUrl,
+        imageUserName: imageUserName,
+        imageLinkHTML: imageLinkHTML,
       },
     });
   } catch (error) {

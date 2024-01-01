@@ -6,8 +6,8 @@ import { CreditCard } from "lucide-react";
 import Image from "next/image";
 
 interface InfoProps {
-    isPro: boolean;
-  };
+  isPro: boolean;
+};
 
 export const Info = () => {
     const { organization, isLoaded } = useOrganization()
