@@ -1,4 +1,3 @@
-// import { Toaster } from "sonner";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "sonner";
 
