@@ -4,12 +4,7 @@ import { toast } from "sonner";
 import { List } from "@prisma/client";
 import { ElementRef, useRef } from "react";
 import { MoreHorizontal, X } from "lucide-react";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  PopoverClose
-} from "@/components/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger, PopoverClose } from "@/components/ui/popover";
 import { useAction } from "@/hooks/use-action";
 import { Button } from "@/components/ui/button";
 import { deleteList } from "@/actions/delete-list";
@@ -83,7 +78,7 @@ export const ListOptions = ({
           className="rounded-none w-full h-auto p-2 px-5 justify-start font-normal text-sm"
           variant="ghost"
         >
-          Add card...
+          Add card
         </Button>
         <form action={onCopy}>
           <input hidden name="id" id="id" value={data.id} />
@@ -92,7 +87,7 @@ export const ListOptions = ({
             variant="ghost"
             className="rounded-none w-full h-auto p-2 px-5 justify-start font-normal text-sm"
           >
-            Copy list...
+            Copy list
           </FormSubmit>
         </form>
         <Separator />
